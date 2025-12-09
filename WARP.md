@@ -9,7 +9,7 @@ This is a complete WordPress Docker environment using nginx, MariaDB 11.2, PHP 8
 ## Architecture
 
 ### Multi-Container Setup
-- **nginx (1.25-alpine)**: Reverse proxy handling HTTP requests, serving static files, and security headers
+- **nginx (custom, based on 1.25-alpine)**: Reverse proxy handling HTTP requests, serving static files, and security headers. Built from Dockerfile with embedded configuration.
 - **wordpress (PHP 8.4-FPM)**: WordPress application layer with WP-CLI pre-installed
 - **db (MariaDB 11.2)**: Database server with optimized configuration
 
@@ -27,6 +27,8 @@ This is a complete WordPress Docker environment using nginx, MariaDB 11.2, PHP 8
 
 ### Key Configuration Files
 - `docker/wordpress/Dockerfile`: Custom WordPress image with WP-CLI
+- `docker/nginx/Dockerfile`: Custom nginx image with embedded configuration files
+- `docker/nginx/nginx.conf`: Main nginx configuration (worker processes, gzip, buffers)
 - `docker/nginx/default.conf`: nginx server block with WordPress-specific rules
 - `docker/php/custom.ini`: PHP runtime configuration (512M memory, 300s timeout, OPcache)
 - `docker/php/php-fpm.conf`: PHP-FPM pool settings
